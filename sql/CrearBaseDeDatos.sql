@@ -1,8 +1,8 @@
-
+-- Creamos la base de datos concesionario
 CREATE DATABASE concesionario;
 USE concesionario;
 
-
+--Creamos todas las tablas
 CREATE TABLE Cliente (
     id_cliente INT PRIMARY KEY AUTO_INCREMENT,
     nombre VARCHAR(100) NOT NULL,
@@ -11,7 +11,7 @@ CREATE TABLE Cliente (
     direccion VARCHAR(200)
 );
 
-CREATE TABLE Vehículo (
+CREATE TABLE Vehiculo (
     id_vehiculo INT PRIMARY KEY AUTO_INCREMENT,
     Tipo VARCHAR(50) NOT NULL,
     marca VARCHAR(50) NOT NULL,
@@ -28,7 +28,7 @@ CREATE TABLE Venta (
     total DECIMAL(10,2),
     id_vehiculo INT NOT NULL,
     id_cliente INT NOT NULL,
-    FOREIGN KEY (id_vehiculo) REFERENCES vehículo(id_vehiculo),
+    FOREIGN KEY (id_vehiculo) REFERENCES vehiculo(id_vehiculo),
     FOREIGN KEY (id_cliente) REFERENCES Cliente(id_cliente)
 );
 
@@ -45,19 +45,19 @@ CREATE TABLE CitaTaller (
     descripcion TEXT,
     id_vehiculo INT NOT NULL,
     id_mecanico INT NOT NULL,
-    FOREIGN KEY (id_vehiculo) REFERENCES vehículo(id_vehiculo),
+    FOREIGN KEY (id_vehiculo) REFERENCES vehiculo(id_vehiculo),
     FOREIGN KEY (id_mecanico) REFERENCES Mecanico(id_mecanico)
 );
 
-
+--Hacemos los insterts para rellenar las tablas con informacion inventada
 INSERT INTO Cliente (nombre, telefono, email, direccion) VALUES
 ('Juan Pérez', '600111222', 'juan@email.com', 'Calle Mayor 1, Madrid'),
 ('María Friki ', '600333444', 'maria@email.com', 'Avenida Sol 2, Barcelona'),
-('Jairo Jairea', '600555666', 'jairo@email.com', 'Plaza Centro 3, Valencia');
-('Candela Chimenea', '600555666', 'candela@email.com', 'Plaza Centro 3, Valencia');
-('Gonzalo Carnets', '600555666', 'gonzalo@email.com', 'Plaza Centro 3, Valencia');
+('Jairo Jairea', '600555666', 'jairo@email.com', 'Calle Bolonchos 4, Almeria'),
+('Candela Chimenea', '600555666', 'candela@email.com', 'Plaza Venezuela 5, Granada'),
+('Gonzalo Carnets', '600555666', 'gonzalo@email.com', 'Calle Pa 6, Palencia');
 
-INSERT INTO vehículo (tipo, marca, modelo, anio, precio, estado, matricula) VALUES
+INSERT INTO vehiculo (tipo, marca, modelo, anio, precio, estado, matricula) VALUES
 ('coche', 'BMW', 'e46', 2014, 12000.00, 'usado', '1234ABC'),
 ('coche', 'Audi', 'RS3 SportBack', 2023, 57000.00, 'nuevo', '5678DEF'),
 ('coche', 'Mercedes', 'Clase G', 2022, 66500.00, 'nuevo', '9101GHI'),
