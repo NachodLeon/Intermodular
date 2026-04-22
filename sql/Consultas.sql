@@ -13,7 +13,7 @@ JOIN vehiculo veh ON veh.id_vehiculo = veh.id_vehiculo;
 SELECT ct.fecha, ct.hora, ct.descripcion, m.nombre AS mecanico, veh.matricula
 FROM CitaTaller ct
 JOIN Mecanico m ON ct.id_mecanico = m.id_mecanico
-JOIN vehiculo veh ON ct.id_coche = veh.id_coche
+JOIN vehiculo veh ON ct.id_vehiculo = veh.id_vehiculo 
 ORDER BY ct.fecha;
 
 -- 4. Coches o motos disponibles
